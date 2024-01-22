@@ -1,9 +1,10 @@
 const { ApolloServer, gql } = require("apollo-server");
-const { getSoftSkills, createSoftSkill } = require("./softSkills");
+const { getSoftSkills, createSoftSkill, getSearchedSoftSkills } = require("./softSkills");
 
 const typeDefs = gql`
   type Query {
     softSkills: [SoftSkill!]
+    searchSoftSkills(searchText: String!): [SoftSkill!]
   }
 
   type Mutation {
@@ -20,6 +21,10 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     softSkills: () => getSoftSkills(),
+    searchSoftSkills: (_, args) => {
+
+      return getSearchedSoftSkills(args.searchText);
+    }
   },
   Mutation: {
     createSoftSkill: (_, { name, description }) =>

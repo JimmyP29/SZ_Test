@@ -25,6 +25,13 @@ let softSkills = [
 
 const getSoftSkills = () => softSkills;
 
+const getSearchedSoftSkills = (searchText) => {
+  //return softSkills.find(skill => skill.name === name);
+  return softSkills.filter(skill =>
+    skill.name.startsWith(searchText)
+  );
+}
+
 const createSoftSkill = (name, description) => {
   const ss = {
     id: generateId(),
@@ -38,5 +45,6 @@ const createSoftSkill = (name, description) => {
 
 module.exports = {
   getSoftSkills,
+  getSearchedSoftSkills,
   createSoftSkill,
 };
