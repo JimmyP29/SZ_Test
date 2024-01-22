@@ -1,0 +1,101 @@
+@use "sass:math";
+@import "variables";
+
+@mixin loader-size($size) {
+  .loader__animation {
+    > div {
+      height: $size;
+      width: $size;
+    }
+  }
+}
+
+.loader {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
+  &__animation {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    > div {
+      -webkit-animation: bounce-delay 1.4s infinite ease-in-out both;
+      animation: bounce-delay 1.4s infinite ease-in-out both;
+      border-radius: 100%;
+      display: inline-block;
+      background-color: $green;
+    }
+
+    .loader__bounce__1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .loader__bounce__2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+  }
+
+  &_color_green {
+    .loader__animation {
+      > div {
+        background-color: $green;
+      }
+    }
+  }
+
+  &_color_purple {
+    .loader__animation {
+      > div {
+        background-color: $purple;
+      }
+    }
+  }
+
+  &_color_white {
+    .loader__animation {
+      > div {
+        background-color: $white;
+      }
+    }
+  }
+
+  &_size_large {
+    @include loader-size(24px);
+  }
+
+  &_size_medium {
+    @include loader-size(16px);
+  }
+
+  &_size_small {
+    @include loader-size(8px);
+  }
+}
+
+@-webkit-keyframes bounce-delay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes bounce-delay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

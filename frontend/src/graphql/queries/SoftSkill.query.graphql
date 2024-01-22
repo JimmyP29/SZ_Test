@@ -1,0 +1,5 @@
+query softSkills {
+  softSkills {
+    ...SoftSkill
+  }
+}

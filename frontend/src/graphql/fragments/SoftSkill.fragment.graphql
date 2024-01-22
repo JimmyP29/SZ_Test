@@ -1,0 +1,5 @@
+fragment SoftSkill on SoftSkill {
+  id
+  name
+  description
+}

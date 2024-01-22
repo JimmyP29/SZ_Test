@@ -1,0 +1,45 @@
+@import "variables";
+
+.sz-text-input {
+  display: flex;
+  border-bottom: 1px solid $black;
+  height: 25px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 0;
+
+  :focus {
+    outline: none;
+  }
+
+  &_error {
+    border-bottom: 1px solid $purple;
+
+    .sz-text-input__input-element {
+      color: $purple;
+    }
+  }
+
+  &_disabled {
+    border-bottom: 1px solid $black-16;
+
+    .sz-text-input__input-element {
+      cursor: not-allowed;
+    }
+  }
+
+  &__input-element {
+    @include desktop-body-font;
+    padding-left: 0;
+    border: 0;
+    color: $black;
+    background-color: transparent;
+    border-radius: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: $black-38;
+    }
+  }
+}

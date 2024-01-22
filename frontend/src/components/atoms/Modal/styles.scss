@@ -1,0 +1,49 @@
+@import "variables";
+
+.sz-modal {
+  background-color: $white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  padding: 36px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.08);
+    z-index: 9999;
+  }
+
+  &_full-screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  &__header-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__header-text {
+    @include desktop-headline-medium-font;
+    width: 100%;
+    height: 16px;
+    color: $black;
+    margin: 0px 130px 20px 0;
+  }
+}

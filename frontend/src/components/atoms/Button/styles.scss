@@ -1,0 +1,168 @@
+@import "variables";
+
+.button {
+  border-radius: 5px;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &_size-large {
+    border-radius: 8px;
+    height: 44px;
+    gap: 8px;
+    padding: 12px 24px;
+
+    .button__content {
+      @include desktop-body-medium-font;
+    }
+  }
+
+  &_size-medium {
+    border-radius: 4px;
+    height: 36px;
+    gap: 4px;
+    padding: 8px 12px;
+
+    .button__content {
+      @include desktop-body-medium-font;
+    }
+  }
+
+  &_size-small {
+    border-radius: 4px;
+    height: 32px;
+    gap: 4px;
+    padding: 8px 12px;
+
+    .button__content {
+      @include desktop-caption-medium-font;
+    }
+  }
+
+  &_variant-primary {
+    border: none;
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+      background-color: $green-80;
+      color: $white;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_variant-primary.button_color-purple {
+    border: none;
+    background-color: $purple;
+    color: $white;
+
+    &:hover {
+      background-color: $purple-80;
+      color: $white;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_variant-primary.button_color-blue {
+    border: none;
+    background-color: $blue;
+    color: $white;
+
+    &:hover {
+      background-color: $blue-80;
+      color: $white;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_variant-secondary {
+    border: solid 1px $black-16;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      background-color: $black-4;
+      color: $black;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_variant-ghost {
+    border: none;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      background-color: $white;
+      color: $black;
+    }
+
+    &:disabled {
+      background-color: $white;
+      color: $black-38;
+    }
+  }
+
+  &_size-small.button_variant-primary {
+    border: solid 1px $black-16;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      background-color: $black-4;
+      color: $black;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_size-small.button_variant-secondary {
+    border: none;
+    background-color: $black-4;
+    color: $black-54;
+
+    &:hover {
+      background-color: $green-10;
+      color: $green;
+    }
+
+    &:disabled {
+      background-color: $black-4;
+      color: $black-38;
+    }
+  }
+
+  &_full-width {
+    width: 100%;
+  }
+}
