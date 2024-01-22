@@ -2,11 +2,15 @@ import { FC } from "react";
 import "./styles.scss";
 import { TextInputField } from "components/molecules/TextInputField";
 import { SoftSkillsList } from "./SoftSkillsList";
+import { useSoftSkillsQuery } from "generated/graphql";
 
-interface ISoftSkills {}
+interface ISoftSkills { }
 
 const SoftSkills: FC<ISoftSkills> = () => {
   // TODO: 1. Implement getting soft skills from api.
+  const { data, loading, error } = useSoftSkillsQuery();
+
+  console.log(data);
 
   // TODO: 3. Implement logic for searching soft skills.
 
@@ -19,7 +23,7 @@ const SoftSkills: FC<ISoftSkills> = () => {
             id="search"
             label="Search"
             placeholder="Search"
-            onChange={() => {}}
+            onChange={() => { }}
             value={""}
           />
         </div>
