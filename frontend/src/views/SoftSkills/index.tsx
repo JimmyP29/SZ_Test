@@ -62,9 +62,13 @@ const SoftSkills: FC<ISoftSkills> = () => {
 
   const renderErrorMessage = () => <p>Error: {error?.message}</p>
 
+  // useEffect(() => {
+  //   if (data) { retrieveSoftSkills(); }
+  // }, []);
+
   useEffect(() => {
-    if (data) { retrieveSoftSkills(); }
-  }, []);
+    if (!loading && softSkills.length === 0) { retrieveSoftSkills(); }
+  });
 
   return (
     <div className="soft-skills">
