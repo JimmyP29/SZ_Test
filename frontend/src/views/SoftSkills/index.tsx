@@ -9,8 +9,11 @@ interface ISoftSkills { }
 const SoftSkills: FC<ISoftSkills> = () => {
   // TODO: 1. Implement getting soft skills from api.
   const [softSkills, setSoftSkills] = useState<SoftSkill[]>([] as SoftSkill[]);
+  const [filteredSoftSkills, setFilteredSoftSkills] = useState<SoftSkill[]>([] as SoftSkill[]);
+  const [searchText, setSearchText] = useState<string>('');
+
   const { data, loading, error } = useSoftSkillsQuery();
-  console.log(softSkills)
+  // console.log(softSkills)
   // const blah = { __typename: 'SoftSkill', id: 'CtGOY0mZZN4c6tgYj4fKB', name: 'Adapts to change', description: '' } as SoftSkill;
   // const { data, loading, error } = useSoftSkillsQuery({
   //   variables: {
@@ -20,26 +23,48 @@ const SoftSkills: FC<ISoftSkills> = () => {
 
   const retrieveSoftSkills = () => {
     // const { data, loading, error } = useSoftSkillsQuery();
-    const result = data?.softSkills;
 
+    const result = data?.softSkills;
+    console.log(result)
     if (result) {
       setSoftSkills(result as SoftSkill[]);
+      setFilteredSoftSkills(result as SoftSkill[]);
     }
   }
 
-  useEffect(() => {
-    retrieveSoftSkills();
-  });
+
 
 
   //console.log(data);
 
   // TODO: 3. Implement logic for searching soft skills.
+  const searchSoftSkills = (enteredText: string) => {
+    if (enteredText) {
+      const result = filteredSoftSkills.filter(skill =>
+        skill.name.startsWith(enteredText)
+      );
+      // console.log(blah)
 
+      setSoftSkills(result as SoftSkill[]);
+    } else {
+      retrieveSoftSkills();
+    }
+  }
+
+
+
+  const handleOnTextChange = (enteredText: string) => {
+    setSearchText(enteredText);
+    searchSoftSkills(enteredText);
+  }
 
   const renderLoadingMessage = () => <p>Loading...</p>
 
   const renderErrorMessage = () => <p>Error: {error?.message}</p>
+
+  useEffect(() => {
+    if (data) { retrieveSoftSkills(); }
+  }, []);
 
   return (
     <div className="soft-skills">
@@ -59,8 +84,8 @@ const SoftSkills: FC<ISoftSkills> = () => {
                 id="search"
                 label="Search"
                 placeholder="Search"
-                onChange={() => { }}
-                value={""}
+                onChange={handleOnTextChange}
+                value={searchText}
               />
             </div>
             <SoftSkillsList softSkills={softSkills} />
