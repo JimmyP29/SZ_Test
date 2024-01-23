@@ -34,7 +34,13 @@ export type MutationCreateSoftSkillArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  searchSoftSkills?: Maybe<Array<SoftSkill>>;
   softSkills?: Maybe<Array<SoftSkill>>;
+};
+
+
+export type QuerySearchSoftSkillsArgs = {
+  searchText: Scalars['String'];
 };
 
 export type SoftSkill = {
