@@ -3,6 +3,7 @@ import "./styles.scss";
 import { TextInputField } from "components/molecules/TextInputField";
 import { SoftSkillsList } from "./SoftSkillsList";
 import { SoftSkill, useSoftSkillsQuery } from "generated/graphql";
+import { useDebounce } from "hooks";
 
 interface ISoftSkills { }
 
@@ -12,23 +13,27 @@ const SoftSkills: FC<ISoftSkills> = () => {
   const [filteredSoftSkills, setFilteredSoftSkills] = useState<SoftSkill[]>([] as SoftSkill[]);
   const [searchText, setSearchText] = useState<string>('');
 
+  useDebounce(searchText);
+  //console.log(debouncedSearch)
   const { data, loading, error } = useSoftSkillsQuery();
   // console.log(softSkills)
   // const blah = { __typename: 'SoftSkill', id: 'CtGOY0mZZN4c6tgYj4fKB', name: 'Adapts to change', description: '' } as SoftSkill;
-  // const { data, loading, error } = useSoftSkillsQuery({
+  // const { data: data2, loading: loading2, error: error2 } = useSearchSoftSkillsQuery({
   //   variables: {
-  //     softSkills: [blah]
+  //     searchText: 'Bu'
   //   },
   // });
+
+  // console.log(data2)
 
   const retrieveSoftSkills = () => {
     // const { data, loading, error } = useSoftSkillsQuery();
 
-    const result = data?.softSkills;
-    console.log(result)
+    const result = data?.softSkills as SoftSkill[];
+    // console.log(result)
     if (result) {
-      setSoftSkills(result as SoftSkill[]);
-      setFilteredSoftSkills(result as SoftSkill[]);
+      setSoftSkills(result);
+      setFilteredSoftSkills(result);
     }
   }
 
