@@ -1,34 +1,16 @@
-# Spotted Zebra Frontend Take Home Assignment
+# SZ_Test
+ A demo application technical test. I have renamed the original `README` to `SZ_README.md`. The setup is the same as the steps written there.
 
-## Prerequisites
 
-`yarn`
-`node 16.13.0 or higher`
+## Demos
 
-## Setup
+### Working in the UI
+![Working in the UI](https://github.com/JimmyP29/SZ_Test/blob/master/readme_assets/Softskills_UI2.gif)
 
-### Backend setup
+### Working in the Apollo Client 
+![Working in the Apollo Client](https://github.com/JimmyP29/SZ_Test/blob/master/readme_assets/Softskills_Apollo_client2.gif)
 
-Navigate to backend folder and run commands:
+### Debounce Demo
+![Debounce Demo](https://github.com/JimmyP29/SZ_Test/blob/master/readme_assets/Softskills_debounce_demo_1.gif)
 
-```bash
-yarn install
-yarn start
-```
 
-### Frontend setup
-
-Navigate to frontend folder and run commands:
-
-```bash
-yarn install
-yarn generate
-yarn start
-```
-
-## Requirements
-
-1. Implement getting soft skills data from api (use generated query from `/src/generated/graphql.tsx`).
-2. Implement soft skills list (use Card component from `/src/components/atoms/Card`).
-3. Implement logic for searching soft skills.
-4. Adjust logic for searching soft skills so that will be debounced for one second.
