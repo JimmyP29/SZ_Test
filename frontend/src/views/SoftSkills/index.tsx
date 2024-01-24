@@ -14,33 +14,17 @@ const SoftSkills: FC<ISoftSkills> = () => {
   const [searchText, setSearchText] = useState<string>('');
 
   useDebounce(searchText);
-  //console.log(debouncedSearch)
-  const { data, loading, error } = useSoftSkillsQuery();
-  // console.log(softSkills)
-  // const blah = { __typename: 'SoftSkill', id: 'CtGOY0mZZN4c6tgYj4fKB', name: 'Adapts to change', description: '' } as SoftSkill;
-  // const { data: data2, loading: loading2, error: error2 } = useSearchSoftSkillsQuery({
-  //   variables: {
-  //     searchText: 'Bu'
-  //   },
-  // });
 
-  // console.log(data2)
+  const { data, loading, error } = useSoftSkillsQuery();
 
   const retrieveSoftSkills = () => {
-    // const { data, loading, error } = useSoftSkillsQuery();
-
     const result = data?.softSkills as SoftSkill[];
-    // console.log(result)
+
     if (result) {
       setSoftSkills(result);
       setFilteredSoftSkills(result);
     }
   }
-
-
-
-
-  //console.log(data);
 
   // TODO: 3. Implement logic for searching soft skills.
   const searchSoftSkills = (enteredText: string) => {
@@ -48,15 +32,12 @@ const SoftSkills: FC<ISoftSkills> = () => {
       const result = filteredSoftSkills.filter(skill =>
         skill.name.startsWith(enteredText)
       );
-      // console.log(blah)
 
       setSoftSkills(result as SoftSkill[]);
     } else {
       retrieveSoftSkills();
     }
   }
-
-
 
   const handleOnTextChange = (enteredText: string) => {
     setSearchText(enteredText);
@@ -66,10 +47,6 @@ const SoftSkills: FC<ISoftSkills> = () => {
   const renderLoadingMessage = () => <p>Loading...</p>
 
   const renderErrorMessage = () => <p>Error: {error?.message}</p>
-
-  // useEffect(() => {
-  //   if (data) { retrieveSoftSkills(); }
-  // }, []);
 
   useEffect(() => {
     if (!loading && softSkills.length === 0) { retrieveSoftSkills(); }
